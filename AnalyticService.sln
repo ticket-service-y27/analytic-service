@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F4C0D1B4-D7E8-49E5-B50D-3A66D0EE0560}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{355F6B18-3A69-4CAB-8198-25523CBD05F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F340EFBC-FD2B-470A-ABCB-AFACB4486808}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{BC90148C-42A5-44ED-AAED-93C3A78622E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyticService.Infrastructure.DataAccess", "src\Infrastructure\AnalyticService.Infrastructure.DataAccess\AnalyticService.Infrastructure.DataAccess.csproj", "{FE9B6319-6409-4C8E-9C5F-1C0F1245A4E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE9B6319-6409-4C8E-9C5F-1C0F1245A4E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE9B6319-6409-4C8E-9C5F-1C0F1245A4E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE9B6319-6409-4C8E-9C5F-1C0F1245A4E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE9B6319-6409-4C8E-9C5F-1C0F1245A4E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{355F6B18-3A69-4CAB-8198-25523CBD05F4} = {F4C0D1B4-D7E8-49E5-B50D-3A66D0EE0560}
+		{F340EFBC-FD2B-470A-ABCB-AFACB4486808} = {F4C0D1B4-D7E8-49E5-B50D-3A66D0EE0560}
+		{BC90148C-42A5-44ED-AAED-93C3A78622E8} = {F4C0D1B4-D7E8-49E5-B50D-3A66D0EE0560}
+		{FE9B6319-6409-4C8E-9C5F-1C0F1245A4E0} = {355F6B18-3A69-4CAB-8198-25523CBD05F4}
+	EndGlobalSection
+EndGlobal
