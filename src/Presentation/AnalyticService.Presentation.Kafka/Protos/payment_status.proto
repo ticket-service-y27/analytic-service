@@ -1,0 +1,42 @@
+syntax = "proto3";
+package payments;
+
+option csharp_namespace = "Payments.Kafka.Contracts";
+
+message PaymentStatusKey {
+  int64 payment_id = 1;
+}
+
+message PaymentStatusValue {
+  oneof event {
+    PaymentPending payment_pending = 1;
+    PaymentSucceeded payment_succeeded = 2;
+    PaymentFailed payment_failed = 3;
+    PaymentRefunded payment_refunded = 4;
+  }
+
+  message PaymentPending {
+    int64 wallet_id = 2;
+    int64 amount = 3;
+    int64 user_id = 4;
+  }
+
+  message PaymentSucceeded {
+    int64 wallet_id = 2;
+    int64 amount = 3;
+    int64 user_id = 4;
+  }
+
+  message PaymentRefunded {
+    int64 wallet_id = 2;
+    int64 amount = 3;
+    int64 user_id = 4;
+  }
+
+  message PaymentFailed {
+    int64 wallet_id = 2;
+    int64 amount = 3;
+    int64 user_id = 4;
+  }
+}
+

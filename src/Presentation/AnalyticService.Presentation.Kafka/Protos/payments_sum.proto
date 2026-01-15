@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package loyalty;
+
+option csharp_namespace = "Loyalty.Kafka.Contracts";
+
+import "google/protobuf/timestamp.proto";
+
+message PaymentsSumKey {
+  int64 user_id = 1;
+}
+
+message PaymentsSumValue {
+  int64 user_id = 1;
+  int64 payments_sum = 2;
+  google.protobuf.Timestamp published_at = 3;
+}
