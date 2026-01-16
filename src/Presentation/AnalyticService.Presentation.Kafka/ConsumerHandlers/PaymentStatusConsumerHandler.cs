@@ -45,26 +45,26 @@ public class PaymentStatusConsumerHandler : IKafkaConsumerHandler<PaymentStatusK
                 case PaymentStatusValue.EventOneofCase.PaymentSucceeded:
                     await _paymentService.UpsertAsync(
                         message.Key.PaymentId,
-                        message.Value.PaymentFailed.WalletId,
-                        message.Value.PaymentFailed.Amount,
-                        message.Value.PaymentFailed.UserId,
+                        message.Value.PaymentSucceeded.WalletId,
+                        message.Value.PaymentSucceeded.Amount,
+                        message.Value.PaymentSucceeded.UserId,
                         PaymentStatus.Succeeded,
                         DateTimeOffset.Now,
                         cancellationToken);
 
-                    await _paymentService.GetSumByUserAsync(message.Value.PaymentFailed.UserId, cancellationToken);
+                    await _paymentService.GetSumByUserAsync(message.Value.PaymentSucceeded.UserId, cancellationToken);
                     break;
                 case PaymentStatusValue.EventOneofCase.PaymentRefunded:
                     await _paymentService.UpsertAsync(
                         message.Key.PaymentId,
-                        message.Value.PaymentFailed.WalletId,
-                        message.Value.PaymentFailed.Amount,
-                        message.Value.PaymentFailed.UserId,
+                        message.Value.PaymentRefunded.WalletId,
+                        message.Value.PaymentRefunded.Amount,
+                        message.Value.PaymentRefunded.UserId,
                         PaymentStatus.Refunded,
                         DateTimeOffset.Now,
                         cancellationToken);
 
-                    await _paymentService.GetSumByUserAsync(message.Value.PaymentFailed.UserId, cancellationToken);
+                    await _paymentService.GetSumByUserAsync(message.Value.PaymentRefunded.UserId, cancellationToken);
                     break;
                 default:
                     break;

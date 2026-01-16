@@ -1,4 +1,6 @@
+using AnalyticService.Application.Abstractions.Events;
 using AnalyticService.Application.Abstractions.Payments;
+using AnalyticService.Application.Abstractions.Venues;
 using AnalyticService.Application.Models.Payments;
 using AnalyticService.Infrastructure.DataAccess.Migrations;
 using AnalyticService.Infrastructure.DataAccess.Options;
@@ -32,6 +34,8 @@ public static class RepositoryExtensions
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<IPaymentRepository, PaymentRepository>();
+        services.AddScoped<IEventRepository, EventRepository>();
+        services.AddScoped<IVenueRepository, VenueRepository>();
         return services;
     }
 

@@ -53,14 +53,14 @@ public class PaymentRepository : IPaymentRepository
     public async Task<long> GetSumSucceededPaymentsByUserAsync(long userId, CancellationToken cancellationToken)
     {
         const string sql = """
-                           select coalesce(sum(amount), 0)
+                           select coalesce(sum(amount), 0)::bigint
                            from payments
-                           where user_id = @UserId
-                             and status is 'succeeded'
+                           where user_id = @UserId and status = @Status::payment_status
                            """;
         await using NpgsqlConnection connection = await _dataSource.OpenConnectionAsync(cancellationToken);
         await using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.Add(new NpgsqlParameter("@UserId", userId));
+        command.Parameters.AddWithValue("@Status", "succeeded");
 
         return (long)(await command.ExecuteScalarAsync(cancellationToken) ?? 0);
     }
@@ -68,14 +68,14 @@ public class PaymentRepository : IPaymentRepository
     public async Task<long> GetSumRefundedPaymentsByUserAsync(long userId, CancellationToken cancellationToken)
     {
         const string sql = """
-                           select coalesce(sum(amount), 0)
+                           select coalesce(sum(amount), 0)::bigint
                            from payments
-                           where user_id = @UserId
-                             and status is 'refunded'
+                           where user_id = @UserId and status = @Status::payment_status
                            """;
         await using NpgsqlConnection connection = await _dataSource.OpenConnectionAsync(cancellationToken);
         await using var command = new NpgsqlCommand(sql, connection);
         command.Parameters.Add(new NpgsqlParameter("@UserId", userId));
+        command.Parameters.AddWithValue("@Status", "refunded");
 
         return (long)(await command.ExecuteScalarAsync(cancellationToken) ?? 0);
     }
